@@ -1,0 +1,31 @@
+-- Total points of driver 
+SELECT 
+	A.driverId AS Driver_ID,
+	A.forename AS NAME,
+	A.surname AS LASTNAME,
+	A.nationality AS NATIONALITY,
+	sum(B.points) AS Total_points
+FROM drivers AS A
+JOIN results AS B
+ON A.driverId = B.driverId
+GROUP BY A.driverId
+ORDER BY Total_points DESC
+LIMIT 10;
+
+--Fastest lap time in each circuit
+SELECT 
+	A.circuitId AS Circuit_ID,
+	A.name AS Circuit_name,
+	B.name AS Competition_name,
+	A.location AS Location,
+	A.country AS Country,
+	B.year AS Year,
+	C.fastestLapTime AS Fastest_LapTime
+FROM circuits AS A
+JOIN races AS B 
+ON A.circuitId= B.circuitId
+JOIN results AS C
+ON B.raceId = C.raceId
+WHERE C.fastestLapTime !=""
+GROUP BY B.name
+ORDER BY Circuit_name;
