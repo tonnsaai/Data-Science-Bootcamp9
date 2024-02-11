@@ -1,9 +1,10 @@
+#Machine Learning model to predict churn in mobile data usage
+#Objective - to predict churn probability of current customers using machine learning model
+
 library(tidyverse)
 library(mlbench)
 library(caret)
 library(MLmetrics)
-
-#Machine Learning model to predict churn in mobile data usage
 
 churn_data <- read_csv("churn.csv")
 mean(complete.cases(churn_data)) #to check Null in Dataset
